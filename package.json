@@ -1,0 +1,22 @@
+{
+  "name": "dis-source-skeleton",
+  "version": "0.0.1",
+  "description": "Simple DIS (Dynamic Information Syndication) source skeleton.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shd101wyy/DIS-Source-Skeleton.git"
+  },
+  "keywords": [
+    "DIS"
+  ],
+  "author": "shd101wyy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shd101wyy/DIS-Source-Skeleton/issues"
+  },
+  "homepage": "https://github.com/shd101wyy/DIS-Source-Skeleton#readme"
+}
