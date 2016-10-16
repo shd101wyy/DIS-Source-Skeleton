@@ -13,7 +13,7 @@ const PORT = 30000
    usually param (optional) is
    {
     count: Number,
-    pubDate: Number|String
+    page: Number
    }
 */
 function getFeed(param, cb) {
@@ -21,23 +21,16 @@ function getFeed(param, cb) {
     if (error) return cb(error, '')
     let data = JSON.parse(str)
 
-    // get count number of
-    if (typeof(param.count) !== 'undefined' && param.count >= 0) {
-      data.items = data.items.slice(0, parseInt(param.count))
+    // get page
+    let page = 0
+    if (typeof(param.page) !== 'undefined') {
+      page = parseInt(param.page)
     }
 
-    // filter pubDate
-    if (typeof(param.pubDate) !== 'undefined') {
-      let date = param.pubDate
-      if (typeof(date) === 'string' && isNaN(date)) {
-        date = (new Date(date)).getTime()
-      } else {
-        date = parseInt(date)
-      }
-
-      data.items = data.items.filter((d)=> {
-        return (d.pubDate && new Date(d.pubDate).getTime() >= date)
-      })
+    // get count number of
+    if (typeof(param.count) !== 'undefined') {
+      const count = parseInt(param.count)
+      data.items = data.items.slice(count*page, count*page+count)
     }
 
     return cb(null, data)
